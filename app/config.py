@@ -12,4 +12,4 @@ class DevConfig(Config):
     dev config child class
     """
 
-    Debug = True
+    
