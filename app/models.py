@@ -1,6 +1,6 @@
 
 from flask_script import Manager
-from . import db
+from . import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 class Review:
@@ -27,11 +27,14 @@ class Review:
                 response.append(review)
         return response  
 
-class User(db.Model):
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255))
+    username = db.Column(db.String(255),index=True)
+    email = db.Column(db.String(255), index=True)
     role_id=db.Column(db.Integer, db.ForeignKey('roles.id'))
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
     pass_secure=db.Column(db.String(255))
     @property
     def password(self):
@@ -67,3 +70,8 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User{self.name}'
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))        
