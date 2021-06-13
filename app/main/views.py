@@ -1,14 +1,16 @@
 from .forms import ReviewForm
 from flask import render_template,request,redirect,url_for
 from . import main
+from flask_login import login_required
 
 
 #Views
 @main.route('/' ,methods=['GET', 'POST'])
 def index():
+
     '''
     view root page function that returns index page and its data
-    '''
+    ''' 
     title = 'Home -Welcome to Deman App where you will get the best User Experience'
 
     
