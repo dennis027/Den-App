@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextAreaField,SubmitField,BooleanField,PasswordField,
-from wtforms.validators import Email, Required
+from wtforms import StringField,TextAreaField,SubmitField,BooleanField,PasswordField
+from wtforms.validators import Email, Required,email_validator
 
 class ReviewForm(FlaskForm):
     title = StringField('Review title',validators=[Required()])
