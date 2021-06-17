@@ -1,29 +1,26 @@
 
-{% extends 'bootstrap/base.html'%}
-
-<!-- Navbar block  --> 
-{% block navbar %}
-    {% include 'navbar.html' %}
-{% endblock %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+      
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%if title%}
-    <title>{{title}}</title>
-    {%else%}
-    <title>Welcome to best messager app</title>
-    {%endif%}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deman-pitch world</title>
+    {% block styles %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    {% endblock %}
 </head>
-<body>
-
-    {% block content%}
-
-    {%endblock%}
-
-
+<body class="body" style="background-image:url('https://cdn.wallpapersafari.com/58/9/Kp32sB.jpg')" >
+        {% block navbar %}
+        {% include "navbar.html" %}
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% endblock %}
 </body>
-</html>    
+</html>
